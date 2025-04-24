@@ -24,6 +24,6 @@ jobs:
       - name: Desplegar a Azure
         uses: azure/webapps-deploy@v2
         with:
-          app-name: TU_NOMBRE_APP_AZURE
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_TUID }}
+          app-name: mayra1
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_MAYRA }}
           package: .

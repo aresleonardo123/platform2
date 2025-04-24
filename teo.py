@@ -41,4 +41,4 @@ if var1 != var2:
     plt.title(f"Distribución de {var1} según {var2}")
     st.pyplot(fig)
 else:
-    st.warning("Selecciona dos variables distintas.")
+    st.warning("Selecciona dos variables distinaaaaatas.")

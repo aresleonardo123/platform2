@@ -1,0 +1,29 @@
+name: Azure Deploy Streamlit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+
+      - name: Configurar Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Desplegar a Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: TU_NOMBRE_APP_AZURE
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_TUID }}
+          package: .

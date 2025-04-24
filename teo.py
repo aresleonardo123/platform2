@@ -65,7 +65,7 @@ elif analisis == "2️⃣ Asociación entre edad y síntomas musculoesquelético
         tabla, chi2, p = chi_test("EDAD", var)
         st.write(tabla)
         st.download_button(
-            label=f"📥 Descargar CSV - BIOMASA vs {nombre_variables[var]}",
+            label=f"📥 Descargar CSV {nombre_variables[var]}",
             data=tabla.to_csv().encode('utf-8'),
             file_name=f"IMC_vs_{var}.csv",
             mime="text/csv"
@@ -78,7 +78,7 @@ elif analisis == "3️⃣ Comparación síntomas antes y después del programa":
         tabla, chi2, p = chi_test("TIEMPO", var)
         st.write(tabla)
         st.download_button(
-            label=f"📥 Descargar CSV - BIOMASA vs {nombre_variables[var]}",
+            label=f"📥 Descargar CSV {nombre_variables[var]}",
             data=tabla.to_csv().encode('utf-8'),
             file_name=f"IMC_vs_{var}.csv",
             mime="text/csv"
@@ -93,7 +93,7 @@ elif analisis == "4️⃣ Asociación entre ejercicios realizados y síntomas":
             tabla, chi2, p = chi_test("EJERCICIO", var)
             st.write(tabla)
             st.download_button(
-                label=f"📥 Descargar CSV - BIOMASA vs {nombre_variables[var]}",
+                label=f"📥 Descargar CSV {nombre_variables[var]}",
                 data=tabla.to_csv().encode('utf-8'),
                 file_name=f"IMC_vs_{var}.csv",
                 mime="text/csv"

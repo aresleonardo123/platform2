@@ -51,24 +51,40 @@ if analisis == "1️⃣ Asociación entre IMC y síntomas musculoesqueléticos":
         st.subheader(f"BIOMASA (IMC) vs {nombre_variables[var]}")
         tabla, chi2, p = chi_test("BIOMASA", var)
         st.write(tabla)
+        st.download_button(
+            label=f"📥 Descargar CSV - BIOMASA vs {nombre_variables[var]}",
+            data=tabla.to_csv().encode('utf-8'),
+            file_name=f"IMC_vs_{var}.csv",
+            mime="text/csv"
+        )
         st.write(f"Chi² = {chi2:.2f} | p-valor = {p:.4f}")
         st.success("✅ Asociación significativa" if p < 0.05 else "❌ No significativa")
-
 elif analisis == "2️⃣ Asociación entre edad y síntomas musculoesqueléticos":
     for var in sintomas_codificados:
         st.subheader(f"EDAD vs {nombre_variables[var]}")
         tabla, chi2, p = chi_test("EDAD", var)
         st.write(tabla)
+        st.download_button(
+            label=f"📥 Descargar CSV - BIOMASA vs {nombre_variables[var]}",
+            data=tabla.to_csv().encode('utf-8'),
+            file_name=f"IMC_vs_{var}.csv",
+            mime="text/csv"
+        )
         st.write(f"Chi² = {chi2:.2f} | p-valor = {p:.4f}")
         st.success("✅ Asociación significativa" if p < 0.05 else "❌ No significativa")
-
 elif analisis == "3️⃣ Comparación síntomas antes y después del programa":
     for var in sintomas_codificados:
         st.subheader(f"{nombre_variables[var]} - Antes vs Después")
         tabla, chi2, p = chi_test("TIEMPO", var)
         st.write(tabla)
+        st.download_button(
+            label=f"📥 Descargar CSV - BIOMASA vs {nombre_variables[var]}",
+            data=tabla.to_csv().encode('utf-8'),
+            file_name=f"IMC_vs_{var}.csv",
+            mime="text/csv"
+        )
         st.write(f"Chi² = {chi2:.2f} | p-valor = {p:.4f}")
-        st.success("✅ Diferencia significativa" if p < 0.05 else "❌ No significativa")
+        st.success("✅ Asociación significativa" if p < 0.05 else "❌ No significativa")
 
 elif analisis == "4️⃣ Asociación entre ejercicios realizados y síntomas":
     if "EJERCICIO" in df.columns:
@@ -76,6 +92,12 @@ elif analisis == "4️⃣ Asociación entre ejercicios realizados y síntomas":
             st.subheader(f"EJERCICIO vs {nombre_variables[var]}")
             tabla, chi2, p = chi_test("EJERCICIO", var)
             st.write(tabla)
+            st.download_button(
+                label=f"📥 Descargar CSV - BIOMASA vs {nombre_variables[var]}",
+                data=tabla.to_csv().encode('utf-8'),
+                file_name=f"IMC_vs_{var}.csv",
+                mime="text/csv"
+            )
             st.write(f"Chi² = {chi2:.2f} | p-valor = {p:.4f}")
             st.success("✅ Asociación significativa" if p < 0.05 else "❌ No significativa")
     else:
@@ -102,5 +124,11 @@ elif analisis == "🔄 Análisis cruzado personalizado":
         st.write(tabla)
         st.write(f"Chi² = {chi2:.2f} | p-valor = {p:.4f}")
         st.success("✅ Asociación significativa" if p < 0.05 else "❌ No significativa")
+        st.download_button(
+    label=f"📥 Descargar CSV - {var1} vs {var2}",
+    data=tabla.to_csv().encode('utf-8'),
+    file_name=f"{var1}_vs_{var2}.csv",
+    mime="text/csv"
+)
     else:
         st.warning("Selecciona variables distintas para el análisis.")
